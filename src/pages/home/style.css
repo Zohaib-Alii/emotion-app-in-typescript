@@ -1,0 +1,47 @@
+.content-wrapper {
+  overflow: auto;
+}
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 0px 50px !important;
+}
+.main-Heading {
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer !important;
+}
+.main-HeadingRight {
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidebar-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 0 28px 0;
+}
+.siteLogo {
+  width: 155px;
+  cursor: pointer;
+}
+.logoutIcon {
+  font-size: 40px;
+  color: #fff;
+  cursor: pointer !important;
+}
+.main-Color {
+  /* background-color: #3c096c !important; */
+  background-color: #3c096c !important;
+}
+.ant-btn-primary {
+  /* background-color: #613dc1; */
+  background-color: #8401f7;
+}
+.ant-btn-primary:hover {
+  background-color: #9d4edd !important;
+}
