@@ -12,6 +12,14 @@ const HomeContent = () => {
   const dispatch = useDispatch();
 
   // emptyArray[]
+  const objj = {
+    Bio: "string",
+    Religion: "string",
+    id: "string",
+    image: "string",
+    likes: [],
+    nickName: " string",
+  };
   useEffect(() => {
     const realTimeFeeds = onSnapshot(
       collection(db, "usersData"),
@@ -20,6 +28,8 @@ const HomeContent = () => {
         querysnapshot.docs.forEach((doc) => {
           debugger;
           console.log("querysnapshot", doc);
+          // const onj: another = { ...doc.data(), id: doc.id };
+          // console.log(onj);
           temp.push({ ...doc.data(), id: doc.id });
         });
         setTimeline(temp);
@@ -33,7 +43,7 @@ const HomeContent = () => {
   return (
     <>
       <Content className='content-wrapper'>
-        {timeline.map((feed: feedsType) => (
+        {timeline.map((feed) => (
           <MainContent feeds={feed} />
         ))}
       </Content>

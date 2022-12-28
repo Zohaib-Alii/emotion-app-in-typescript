@@ -3,21 +3,25 @@ import {
   UserOutlined,
   HeartOutlined,
   CloudUploadOutlined,
-  VerifiedOutlined,
 } from "@ant-design/icons";
-import { Form, Input, Button, Upload, Avatar, message } from "antd";
+import { Form, Input, Button, Upload, message } from "antd";
 import { Layout } from "antd";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { addDoc, collection } from "firebase/firestore";
 import { db, storage } from "../firebase/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-const { Header, Footer, Sider, Content } = Layout;
+import {
+  addProfileType,
+  imageNormFile,
+  storeDefault,
+} from "../Interfaces/InitialInterface";
+const { Content } = Layout;
 const { TextArea } = Input;
 const AddProfile = () => {
   const [imageUrl, setimageUrl] = useState(null);
-  const { userID } = useSelector((store: any) => store.currentUser);
-  console.log(userID);
+  const { userID } = useSelector((store: storeDefault) => store.currentUser);
+  debugger;
+
   const handleImageUpload = (image: any) => {
     debugger;
     const { name } = image;
@@ -34,7 +38,7 @@ const AddProfile = () => {
     });
   };
   const [form] = Form.useForm();
-  const onFinish = async (values: any) => {
+  const onFinish = async (values: addProfileType) => {
     debugger;
     const data = {
       ...values,
@@ -52,9 +56,10 @@ const AddProfile = () => {
     });
   };
   const onFinishFailed = (errorInfo: any) => {
+    debugger;
     console.log("Failed:", errorInfo);
   };
-  const normFile = (e: any) => {
+  const normFile = (e: imageNormFile) => {
     console.log("Upload event:", e);
     debugger;
     if (Array.isArray(e)) {
@@ -98,7 +103,6 @@ const AddProfile = () => {
                 prefix={<UserOutlined />}
               />
             </Form.Item>
-
             <Form.Item
               label='Religion'
               name='Religion'
@@ -114,7 +118,6 @@ const AddProfile = () => {
                 prefix={<HeartOutlined />}
               />
             </Form.Item>
-
             <Form.Item
               label='Description'
               name='Bio'
@@ -124,12 +127,7 @@ const AddProfile = () => {
                   message: "Please input your Description!",
                 },
               ]}>
-              <TextArea
-                // prefix={<VerifiedOutlined />}
-                size='large'
-                // placeholder='Please describe your self'
-                rows={4}
-              />
+              <TextArea size='large' rows={4} />
             </Form.Item>
 
             <Form.Item label='Profile Picture'>
@@ -193,7 +191,6 @@ const AddProfile = () => {
           </Form>
         </div>
       </div>
-      {/* <AddNewFeed /> */}
     </Content>
   );
 };

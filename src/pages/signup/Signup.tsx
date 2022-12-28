@@ -8,8 +8,14 @@ const Signup = () => {
   const navigate = useNavigate();
   const { Content } = Layout;
   const onFinish = (values: formSubmitValues) => {
-    const { email, password, Name } = values;
-    console.log(email, password, Name, "emai;");
+    const { email, password, Name }: formSubmitValues = values;
+    console.log(
+      "🚀 ~ file: Signup.tsx:12 ~ onFinish ~ email, password, Name ",
+      email,
+      password,
+      Name
+    );
+
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         // Signed in

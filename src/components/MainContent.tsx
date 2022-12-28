@@ -4,19 +4,27 @@ import { Avatar, Card, Tooltip } from "antd";
 import "./style.css";
 import { useSelector } from "react-redux";
 import { defaultImg, handleLike, handleLikerName } from "../utils/Reusable";
+import {
+  alreadyLikeChecked,
+  emptyArray,
+  feeds,
+  storeDefault,
+} from "../Interfaces/InitialInterface";
 const { Meta } = Card;
-const MainContent = ({ feeds }: any) => {
+const MainContent = ({ feeds }: feeds) => {
+  debugger;
+  console.log("🚀 ~ file: MainContent.tsx:10 ~ MainContent ~ feeds", feeds);
+
   const [alreadyLike, setAlreadyLike] = useState(false);
   const { image } = feeds;
-  console.log("🚀 ~ file: MainContent.tsx:21 ~ MainContent ~ feeds", feeds);
   const { userID: currentUserId, userName: currentUserName } = useSelector(
-    (store: any) => store.currentUser
+    (store: storeDefault) => store.currentUser
   );
   // to check user already like or not
   useEffect(() => {
     debugger;
     if (feeds.likes) {
-      const checkk = feeds?.likes.find(
+      const checkk: any = feeds?.likes.find(
         (item: any) => item.likerId === currentUserId
       );
       setAlreadyLike(checkk);

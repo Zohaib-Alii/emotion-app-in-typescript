@@ -1,14 +1,15 @@
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
+import { currentLike, emptyArray, feeds } from "../Interfaces/InitialInterface";
 
 // bydefault set image here
 export const defaultImg =
   "https://www.pngitem.com/pimgs/m/421-4212266_transparent-default-avatar-png-default-avatar-images-png.png";
 
 //  likes showing in tooltip when user hover the like icon
-export const handleLikerName = (feeds: any) => {
+export const handleLikerName = (feeds: emptyArray) => {
   debugger;
-  let array: any = [];
+  let array: {}[] = [];
   feeds?.likes?.map((like: any) => array.push(like?.likerName));
   return array.map((like: any) => <div>{like}</div>);
 };
@@ -22,11 +23,13 @@ export const handleLike = async (
   debugger;
   const docRef = doc(db, "usersData", postId);
   const currentDoc: any = await getDoc(docRef);
+  debugger;
   const prevLikes = await currentDoc.data().likes;
   if (prevLikes.length > 0) {
     const alreadyLike = prevLikes.find(
       (item: any) => item.likerId === currentUserId
     );
+    debugger;
     // remove likes
     if (alreadyLike) {
       const disLike = prevLikes.filter(

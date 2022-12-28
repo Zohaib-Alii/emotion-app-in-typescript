@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { Button, Layout } from "antd";
-import { Link } from "react-router-dom";
+import { Layout } from "antd";
 import MainContent from "./MainContent";
 import { onSnapshot, query } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { collection, where } from "firebase/firestore";
 import { handleFeeds } from "../redux/UserSlice";
+import {
+  emptyArray,
+  State,
+  storeDefault,
+} from "../Interfaces/InitialInterface";
 const { Content } = Layout;
 
 const Feeds = () => {
-  const { userID } = useSelector((store: any) => store.currentUser);
+  const { userID } = useSelector((store: storeDefault) => store.currentUser);
   const dispatch = useDispatch();
   console.log(userID, "userID");
   const [feedsData, setFeedsData] = useState([]);
@@ -35,7 +39,7 @@ const Feeds = () => {
 
   return (
     <Content className='content-wrapper'>
-      {feedsData.map((feed) => (
+      {feedsData.map((feed: any) => (
         <MainContent feeds={feed} />
       ))}
     </Content>
