@@ -3,9 +3,12 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import "../login/style.css";
-import { errorInfo, formSubmitValues } from "../../Interfaces/InitialInterface";
+import { formSubmitValues } from "../../Interfaces/InitialInterface";
+import { settingUserID } from "../../redux/UserSlice";
+import { useDispatch } from "react-redux";
 const Signup = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { Content } = Layout;
   const onFinish = (values: formSubmitValues) => {
     const { email, password, Name }: formSubmitValues = values;
@@ -23,8 +26,8 @@ const Signup = () => {
         await updateProfile(user, {
           displayName: Name,
         });
-        navigate("/login");
-        console.log(user, "user created successfully");
+        dispatch(settingUserID(user));
+        navigate("/dashboard");
       })
       .catch((error) => {
         // const errorCode = error.code;

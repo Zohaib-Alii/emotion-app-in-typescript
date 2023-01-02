@@ -1,6 +1,9 @@
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
-import { currentLike, emptyArray, feeds } from "../Interfaces/InitialInterface";
+import {
+  //  currentLike, feeds,
+  emptyArray,
+} from "../Interfaces/InitialInterface";
 
 // bydefault set image here
 export const defaultImg =
@@ -11,21 +14,18 @@ export const handleLikerName = (feeds: emptyArray) => {
   // debugger;
   let array: {}[] = [];
   feeds?.likes?.map(
-    (
-      like: any
-      // like: {
-      //   likedOn: {};
-      //   likerName: string;
-      //   likerId: string;
-      //   status: string;
-      // }[]
-      // like: (currentLike | null)[])| any
-      // , index: number, array: {}
-    ) => array.push(like?.likerName)
-    // console.log(index, array)
+    (like: any) => array.push(like?.likerName)
+    // like: {
+    //   likedOn: {};
+    //   likerName: string;
+    //   likerId: string;
+    //   status: string;
+    // }[]
+    // like: (currentLike | null)[])| any
+    // , index: number, array: {}
   );
   debugger;
-  return array.map((like: any, ind: number) => <div key={ind}>{like}</div>);
+  return array.map((like: any) => <div>{like}</div>);
 };
 
 //  likes handler method
