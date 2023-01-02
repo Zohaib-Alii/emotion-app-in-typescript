@@ -8,10 +8,24 @@ export const defaultImg =
 
 //  likes showing in tooltip when user hover the like icon
 export const handleLikerName = (feeds: emptyArray) => {
-  debugger;
+  // debugger;
   let array: {}[] = [];
-  feeds?.likes?.map((like: any) => array.push(like?.likerName));
-  return array.map((like: any) => <div>{like}</div>);
+  feeds?.likes?.map(
+    (
+      like: any
+      // like: {
+      //   likedOn: {};
+      //   likerName: string;
+      //   likerId: string;
+      //   status: string;
+      // }[]
+      // like: (currentLike | null)[])| any
+      // , index: number, array: {}
+    ) => array.push(like?.likerName)
+    // console.log(index, array)
+  );
+  debugger;
+  return array.map((like: any, ind: number) => <div key={ind}>{like}</div>);
 };
 
 //  likes handler method
