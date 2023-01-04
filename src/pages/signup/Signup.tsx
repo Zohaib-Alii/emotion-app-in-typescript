@@ -1,11 +1,12 @@
 import { Button, Form, Input, Layout } from "antd";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../../firebase/firebase";
+import { auth, db } from "../../firebase/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import "../login/style.css";
 import { formSubmitValues } from "../../Interfaces/InitialInterface";
 import { settingUserID } from "../../redux/UserSlice";
 import { useDispatch } from "react-redux";
+import { addDoc, collection } from "firebase/firestore";
 const Signup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -22,12 +23,23 @@ const Signup = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         // Signed in
+        debugger;
         const user = userCredential.user;
+        const { displayName, email, phoneNumber, photoURL } = user;
+        const userID: any = user.uid;
         await updateProfile(user, {
           displayName: Name,
         });
+        const data = {
+          userId: userID,
+          displayName: Name,
+          email,
+          phoneNumber,
+          photoURL,
+        };
         dispatch(settingUserID(user));
         navigate("/dashboard");
+        await addDoc(collection(db, "users"), data);
       })
       .catch((error) => {
         // const errorCode = error.code;

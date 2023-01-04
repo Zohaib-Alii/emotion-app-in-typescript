@@ -9,6 +9,7 @@ import Feeds from "../../components/Feeds";
 import logo from "../../assets/images/mainLogo.png";
 import { LogoutOutlined } from "@ant-design/icons";
 import "./style.css";
+import MyProfile from "../../components/MyProfile";
 const { Header, Sider } = Layout;
 const Home = () => {
   const navigate = useNavigate();
@@ -47,12 +48,16 @@ const Home = () => {
               <Link to='/dashboard/feeds'>
                 <Button type='primary'>My feed</Button>
               </Link>
+              <Link to='/dashboard/myProfile'>
+                <Button type='primary'>My Profile</Button>
+              </Link>
             </div>
           </Header>
           <Routes>
             <Route path='*' element={<HomeContent />} />
             <Route path='addNewFeed' element={<AddProfile />} />
             <Route path='feeds' element={<Feeds />} />
+            <Route path='myProfile' element={<MyProfile />} />
           </Routes>
         </Layout>
       </Layout>

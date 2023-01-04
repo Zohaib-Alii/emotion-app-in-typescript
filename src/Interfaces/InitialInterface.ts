@@ -94,3 +94,12 @@ export type currentLike = {
   likerName: string;
   status: string;
 };
+
+export type profileDefaultValue = {
+  displayName: string;
+  email: string;
+  id: string;
+  phoneNumber: string;
+  photoURL: string;
+  userId: string;
+};
