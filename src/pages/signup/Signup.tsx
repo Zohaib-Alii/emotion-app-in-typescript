@@ -25,7 +25,7 @@ const Signup = () => {
         // Signed in
         debugger;
         const user = userCredential.user;
-        const { displayName, email, phoneNumber, photoURL } = user;
+        const { email, phoneNumber, photoURL } = user;
         const userID: any = user.uid;
         await updateProfile(user, {
           displayName: Name,
@@ -42,8 +42,8 @@ const Signup = () => {
         await addDoc(collection(db, "users"), data);
       })
       .catch((error) => {
-        // const errorCode = error.code;
         const errorMessage = error.message;
+        console.log(errorMessage);
         alert(errorMessage);
       });
   };
