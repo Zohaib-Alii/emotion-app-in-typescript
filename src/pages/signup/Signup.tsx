@@ -42,7 +42,9 @@ const Signup = () => {
         await addDoc(collection(db, "users"), data);
       })
       .catch((error) => {
+        // refector singup
         const errorMessage = error.message;
+        console.log(errorMessage);
         alert(errorMessage);
       });
   };
