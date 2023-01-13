@@ -3,6 +3,12 @@ import React from "react";
 const test = () => {
   const handleOpen = () => {
     console.log("show ");
+    const obj = {
+      name: "test",
+      phoneNo: 34920129,
+      age: 19,
+    };
+    return obj;
   };
   return (
     <div>
