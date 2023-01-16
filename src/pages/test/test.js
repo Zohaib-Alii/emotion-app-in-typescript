@@ -7,6 +7,7 @@ const test = () => {
       name: "test",
       phoneNo: 34920129,
       age: 19,
+      gender: "male",
     };
     return obj;
   };
