@@ -9,7 +9,13 @@ const test = () => {
       age: 19,
       gender: "male",
     };
-    return obj;
+    const objTwo = {
+      name: "test1",
+      phoneNo: 303322,
+      age: 34,
+      gender: "female",
+    };
+    return obj, objTwo;
   };
   return (
     <div>
