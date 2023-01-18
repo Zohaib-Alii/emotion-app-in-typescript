@@ -15,7 +15,13 @@ const test = () => {
       age: 34,
       gender: "female",
     };
-    return obj, objTwo;
+    const objThree = {
+      name: "test1",
+      phoneNo: 303322,
+      age: 34,
+      gender: "female",
+    };
+    return obj, objTwo, objThree;
   };
   return (
     <div>
