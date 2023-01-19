@@ -23,10 +23,14 @@ const test = () => {
     };
     return obj, objTwo, objThree;
   };
+  const handleUtils = () => {
+    console.log("utils called");
+  };
   return (
     <div>
       test
       <h1 onClick={handleOpen}>another component</h1>
+      <h1 onClick={handleUtils}>test util function {}</h1>
     </div>
   );
 };
