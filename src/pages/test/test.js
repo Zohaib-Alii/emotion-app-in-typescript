@@ -1,4 +1,5 @@
 import React from "react";
+import { handleLikerName } from "../../utils/Reusable";
 
 const test = () => {
   const handleOpen = () => {
@@ -23,8 +24,10 @@ const test = () => {
     };
     return obj, objTwo, objThree;
   };
-  const handleUtils = () => {
+  const handleUtils = async (id) => {
     console.log("utils called");
+    const { data } = await handleLikerName(id);
+    console.log(data);
   };
   return (
     <div>
