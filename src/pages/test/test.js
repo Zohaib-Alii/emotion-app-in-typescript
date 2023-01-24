@@ -16,13 +16,8 @@ const test = () => {
       age: 34,
       gender: "female",
     };
-    const objThree = {
-      name: "test1",
-      phoneNo: 303322,
-      age: 34,
-      gender: "female",
-    };
-    return obj, objTwo, objThree;
+
+    return obj, objTwo;
   };
   const handleUtils = async (id) => {
     console.log("utils called");
