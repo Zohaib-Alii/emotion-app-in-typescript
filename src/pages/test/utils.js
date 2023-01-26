@@ -1,4 +1,3 @@
 export const handleSpace = () => {
-  console.log("handle space clicked");
-  console.log("try to find");
+  console.log("fix the issue with space");
 };
